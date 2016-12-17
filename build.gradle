@@ -40,6 +40,9 @@ dependencies {
 }
 
 processResources {
+	if(!project.hasProperty("activeProfile")) {
+		ext.activeProfile= "dev"
+	}
 	expand project.properties
 }
 
