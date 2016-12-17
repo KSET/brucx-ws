@@ -1,0 +1,1 @@
+ALTER TABLE ticket_type ADD CONSTRAINT "ticket_type_uq" UNIQUE (name);
