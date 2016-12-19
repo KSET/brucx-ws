@@ -13,17 +13,10 @@ public interface IStudentsRepository {
 
     /**
      * Fetches student by its jmbag
-     * @param jmbag uniuque student identifier
+     * @param id uniuque student identifier(jmbag or nfcID)
      * @return single {@link Student} or null if it doesn't exists
      */
-    Student getByJmbag(String jmbag);
-
-    /**
-     * Fetches student by its contactless card identifier
-     * @param nfcId uniuque student contactless card identifier
-     * @return single {@link Student} or null if it doesn't exists
-     */
-    Student getByNfcId(String nfcId);
+    Student getById(String id);
 
     /**
      * Fetches all stored students
