@@ -1,6 +1,7 @@
 package org.kset.brucx.models;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by marin on 17.12.2016..
@@ -17,7 +18,14 @@ public class Student {
 
     private String email;
 
-    private Byte[] image;
+    /**
+     * Base64 encoded image
+     */
+    private String image;
+
+    private List<Ticket> tickets = new ArrayList<>();
+
+    private Boolean freshmen;
 
     public String getJmbag() {
         return jmbag;
@@ -59,12 +67,28 @@ public class Student {
         this.email = email;
     }
 
-    public Byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Byte[] image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public Boolean getFreshmen() {
+        return freshmen;
+    }
+
+    public void setFreshmen(Boolean freshmen) {
+        this.freshmen = freshmen;
     }
 
     @Override
@@ -74,7 +98,8 @@ public class Student {
 
         Student student = (Student) o;
 
-        return jmbag != null ? jmbag.equals(student.jmbag) : student.jmbag == null;
+        if (jmbag != null ? !jmbag.equals(student.jmbag) : student.jmbag != null) return false;
+        return nfcId != null ? nfcId.equals(student.nfcId) : student.nfcId == null;
 
     }
 
@@ -91,7 +116,9 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
-                ", image=" + Arrays.toString(image) +
+                ", image='" + image + '\'' +
+                ", tickets=" + tickets +
+                ", freshmen=" + freshmen +
                 '}';
     }
 }
